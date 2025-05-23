@@ -4,19 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Search App</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
-
     <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
-    </main>
+      <div class="page-container">
+        <div class="search-wrapper">
+          <span id="loader" class="loader">Load&nbsp;ng</span>
 
-    <load src="./partials/footer.html" />
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search images..."
+          />
+          <button class="search-button">Search</button>
+        </div>
+
+        <div class="results-container" id="results-container"></div>
+      </div>
+    </main>
 
     <script type="module" src="./js/index.js"></script>
   </body>
