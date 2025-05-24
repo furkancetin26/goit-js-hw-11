@@ -1,11 +1,10 @@
-// src/js/index.js
-import { fetchImages } from './js/pixabay-api.js'; // 📦 API modülünü çağır
+import { fetchImages } from './js/pixabay-api.js'; 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { renderImages } from './js/render-functions';
-// Diğer DOM seçimleri...
+
 const searchInput = document.querySelector('.search-input');
 const searchBtn = document.querySelector('.search-button');
 const resultsContainer = document.querySelector('#results-container');

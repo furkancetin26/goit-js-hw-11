@@ -1,6 +1,4 @@
-// src/js/api.js
-
-const API_KEY = "50461526-1c4ae7086be4914a89297c276"; // Gerçek projelerde .env ile gizlenir
+const API_KEY = "50461526-1c4ae7086be4914a89297c276"; 
 
 export async function fetchImages(query) {
   const url = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent(
