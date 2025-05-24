@@ -32,49 +32,7 @@ searchBtn.addEventListener('click', async () => {
       return;
     }
     renderImages(data);
-    data.hits.forEach(hit => {
-      const link = document.createElement("a");
-      link.href = hit.largeImageURL;
-      link.className = "image-card";
-
-      const captionText = `
-        <strong>Tags:</strong> ${hit.tags}<br>
-        👍 ${hit.likes} &nbsp;&nbsp;
-        👁️ ${hit.views} &nbsp;&nbsp;
-        💬 ${hit.comments} &nbsp;&nbsp;
-        ⬇️ ${hit.downloads}
-      `;
-
-      link.setAttribute("data-title", captionText);
-      link.setAttribute("data-lightbox", "gallery");
-
-      const img = document.createElement("img");
-      img.src = hit.webformatURL;
-      img.alt = hit.tags;
-
-      const info = document.createElement("div");
-      info.className = "image-info";
-
-      const tags = document.createElement("p");
-      tags.className = "tags";
-      tags.textContent = `Tags: ${hit.tags}`;
-
-      const stats = document.createElement("div");
-      stats.className = "stats";
-      stats.innerHTML = `
-        <span>👍 ${hit.likes}</span>
-        <span>👁️ ${hit.views}</span>
-        <span>💬 ${hit.comments}</span>
-        <span>⬇️ ${hit.downloads}</span>
-      `;
-
-      info.appendChild(tags);
-      info.appendChild(stats);
-      link.appendChild(img);
-      link.appendChild(info);
-
-      resultsContainer.appendChild(link);
-    });
+    
 
     let lightbox = new SimpleLightbox('.results-container a', {
       captionsData: 'data-title',

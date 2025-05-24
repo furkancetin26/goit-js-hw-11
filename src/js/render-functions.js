@@ -9,7 +9,14 @@ export function renderImages(data) {
 
   const markup = data.hits.map(hit => {
     return `
-      <a class="image-card" href="${hit.largeImageURL}">
+      <a class="image-card" href="${hit.largeImageURL}" 
+         data-title="
+           <strong>Tags:</strong> ${hit.tags}<br>
+           👍 ${hit.likes} &nbsp;&nbsp;
+           👁️ ${hit.views} &nbsp;&nbsp;
+           💬 ${hit.comments} &nbsp;&nbsp;
+           ⬇️ ${hit.downloads}
+         ">
         <img src="${hit.webformatURL}" alt="${hit.tags}" />
         <div class="image-info">
           <p class="tags">Tags: ${hit.tags}</p>
@@ -27,8 +34,9 @@ export function renderImages(data) {
   resultsContainer.insertAdjacentHTML('beforeend', markup);
 
   const lightbox = new SimpleLightbox('.results-container a', {
-    captionsData: 'alt',
+    captionsData: 'data-title',
     captionDelay: 250,
+    captionPosition: 'bottom',
   });
 
   lightbox.refresh();
