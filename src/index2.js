@@ -1,3 +1,4 @@
+import { fetchImages } from './api.js';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
@@ -25,7 +26,6 @@ searchBtn.addEventListener('click', async () => {
     const data = await response.json();
     
     await new Promise(resolve => setTimeout(resolve, 1500)); // 1.5 saniye gecikme simülasyonu
-    
     resultsContainer.innerHTML = "";
 
     if (data.hits.length === 0) {
