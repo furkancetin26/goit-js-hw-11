@@ -1,10 +1,10 @@
 // src/js/index.js
-import { fetchImages } from './js/pixabay_api.js'; // 📦 API modülünü çağır
+import { fetchImages } from './js/pixabay-api.js'; // 📦 API modülünü çağır
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-
+import { renderImages } from './js/render-functions';
 // Diğer DOM seçimleri...
 const searchInput = document.querySelector('.search-input');
 const searchBtn = document.querySelector('.search-button');
@@ -31,7 +31,7 @@ searchBtn.addEventListener('click', async () => {
       });
       return;
     }
-
+    renderImages(data);
     data.hits.forEach(hit => {
       const link = document.createElement("a");
       link.href = hit.largeImageURL;
