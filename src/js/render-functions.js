@@ -1,22 +1,20 @@
-// src/js/render-functions.js
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const resultsContainer = document.querySelector('#results-container');
 
-export function renderImages(data) {
-  resultsContainer.innerHTML = '';
+// Tek bir lightbox örneği, başlangıçta null
+let lightbox = null;
 
-  const markup = data.hits.map(hit => {
-    return `
-      <a class="image-card" href="${hit.largeImageURL}" 
-         data-title="
-           <strong>Tags:</strong> ${hit.tags}<br>
-           👍 ${hit.likes} &nbsp;&nbsp;
-           👁️ ${hit.views} &nbsp;&nbsp;
-           💬 ${hit.comments} &nbsp;&nbsp;
-           ⬇️ ${hit.downloads}
-         ">
+/**
+ * Yeni görselleri mevcut listeye ekler, container'ı temizlemez.
+ * Lightbox'ı refresh eder.
+ */
+export function renderImages(data) {
+  // Her resim <li> içinde olacak şekilde markup oluşturuyoruz
+  const markup = data.hits.map(hit => `
+    
+      <a class="image-card" href="${hit.largeImageURL}">
         <img src="${hit.webformatURL}" alt="${hit.tags}" />
         <div class="image-info">
           <p class="tags">Tags: ${hit.tags}</p>
@@ -28,16 +26,21 @@ export function renderImages(data) {
           </div>
         </div>
       </a>
-    `;
-  }).join('');
+    
+  `).join('');
 
+  // Yeni görselleri mevcut içeriğe ekle
   resultsContainer.insertAdjacentHTML('beforeend', markup);
 
-  const lightbox = new SimpleLightbox('.results-container a', {
-    captionsData: 'data-title',
-    captionDelay: 250,
-    captionPosition: 'bottom',
-  });
-
-  lightbox.refresh();
+  // Eğer lightbox örneği yoksa oluştur
+  if (!lightbox) {
+    lightbox = new SimpleLightbox('#results-container a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+      captionPosition: 'bottom',
+    });
+  } else {
+    // Zaten varsa sadece refresh et
+    lightbox.refresh();
+  }
 }
