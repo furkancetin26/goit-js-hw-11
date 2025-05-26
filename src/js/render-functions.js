@@ -44,3 +44,16 @@ export function renderImages(data) {
     lightbox.refresh();
   }
 }
+export function clearGallery() {
+  const container = document.querySelector('#results-container');
+  container.innerHTML = '';
+}
+export function showLoader() {
+  const loader = document.getElementById('loader');
+  loader.style.display = 'block';
+}
+
+export function hideLoader() {
+  const loader = document.getElementById('loader');
+  loader.style.display = 'none';
+}
