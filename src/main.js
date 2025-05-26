@@ -18,7 +18,7 @@ form.addEventListener('submit', async (e) => {
 
   try {
     const data = await fetchImages(query);
-    await new Promise(r => setTimeout(r, 1500)); // loading gösterimi için
+    
 
     if (data.hits.length === 0) {
       iziToast.warning({
